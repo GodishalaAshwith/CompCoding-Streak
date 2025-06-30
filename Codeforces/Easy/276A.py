@@ -1,0 +1,14 @@
+n,k = list(map(int,input().split()))
+
+joy = float('-inf')
+
+for _ in range(n):
+  f , t = list(map(int,input().split()))
+  if t <= k :
+    if joy<f:
+      joy = f
+  if t>k:
+    if joy< f-(t-k) :
+      joy = f- (t-k)
+
+print(joy)

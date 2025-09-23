@@ -1,11 +1,23 @@
-from sympy import *
+def check(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-t=int(input())
-for i in range(t):
-    x=int(input())
-    L=[]
-    while len(L)<2:
-        if isprime(x):
-            L.append(x)
-        x+=1
-    print(L[0]*L[1])
+def find(n):
+    primes = []
+    while len(primes) < 2:
+        if check(n):
+            primes.append(n)
+        n += 1
+    return primes[0] * primes[1]
+
+
+t = int(input().strip())
+for _ in range(t):
+    n = int(input().strip())
+    if n == 1:
+        n += 1
+    print(find(n))
